@@ -74,17 +74,13 @@ fun MessageCard(message: Message) {
             if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface,
         )
 
-        Column(modifier = Modifier.clickable {
-            isExpanded != isExpanded
-            Log.d("YOLO", "clicked $isExpanded")
-        })
-        {
+        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Text(
                 text = message.author,
                 color = MaterialTheme.colors.secondaryVariant,
                 style = MaterialTheme.typography.subtitle2
             )
-
+            
             Spacer(modifier = Modifier.height(4.dp))
 
             Surface(
@@ -100,7 +96,7 @@ fun MessageCard(message: Message) {
                 Text(
                     text = message.body,
                     modifier = Modifier.padding(all = 4.dp),
-                    maxLines = if (isExpanded) Integer.MAX_VALUE else 1,
+                    maxLines = if (isExpanded) Int.MAX_VALUE else 1,
                     style = MaterialTheme.typography.body2,
                 )
             }
